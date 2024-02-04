@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Generic IoT Infrastructure</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+		integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+	<style>
+		/*html,
+		body {
+			min-height: 100%;
+			background: rgb(138, 226, 52);
+		}*/
+
+		body,
+		div,
+		form,
+		input,
+		select,
+		p {
+			padding: 0;
+			margin: 0;
+			outline: none;
+			font-family: Roboto, Arial, sans-serif;
+			font-size: 20px;
+			color: #eee;
+		}
+
+		body {
+			background: url("/uploads/media/default/0001/01/b5edc1bad4dc8c20291c8394527cb2c5b43ee13c.jpeg") no-repeat center;
+			background-size: cover;
+		}
+
+		h1,
+		h2 {
+			text-transform: uppercase;
+			font-weight: 500;
+		}
+
+		h2 {
+			margin: 0 0 0 8px;
+		}
+
+		h3 {
+			font-weight: 500;
+			font-size: 24px;
+		}
+
+		.form-container {
+			display: flex;
+			justify-content: center;
+			/* padding-bottom: 5%;
+            padding-top: 5%;
+            padding-right: 150px;*/
+			background: rgb(204, 0, 0)
+		}
+
+		.left-part {
+			text-align: center;
+			padding-top: 5%;
+			padding-right: 15%;
+			/*padding-bottom: 20%;*/
+			background: rgb(85, 87, 83);
+		}
+
+		.fa-industry {
+			font-size: 100px;
+		}
+
+		form {
+			/*margin-top: 5%;*/
+			padding-top: 5%;
+			padding-left: 25px;
+			padding-right: 25px;
+			/*  padding-bottom: 25px;
+            border-radius: 50px;*/
+			margin-left: -200px;
+			/*  transition: min-height 0.5s ease-in-out; Add transition for smooth resizing */
+			/*background: rgb(237, 212, 0);*/
+		}
+
+		.title {
+			display: flex;
+			align-items: center;
+			margin-bottom: 20px;
+		}
+
+		.info {
+			display: flex;
+			flex-direction: column;
+		}
+
+		input,
+		select {
+			padding: 5px;
+			margin-bottom: 35px;
+			background: transparent;
+			border: none;
+			border-bottom: 1px solid #eee;
+		}
+
+		input::placeholder {
+			color: #eee;
+		}
+
+		option:focus {
+			border: none;
+		}
+
+		option {
+			background: black;
+			border: none;
+		}
+
+		.checkbox input {
+			margin: 0 15px 0 0;
+			vertical-align: middle;
+		}
+
+		.checkbox a {
+			color: #26a9e0;
+		}
+
+		.checkbox a:hover {
+			color: #85d6de;
+		}
+
+		.btn-item,
+		button {
+			padding: 10px 15px;
+			margin-top: 20px;
+			margin-bottom: 20px;
+			border-radius: 10px;
+			border: none;
+			background: #26a9e0;
+			text-decoration: none;
+			font-size: 25px;
+			font-weight: 500;
+			color: rgb(46, 52, 54);
+		}
+
+		.btn-item {
+			display: block;
+			/* Change from inline-block to block */
+			padding: 10px 50px;
+			width: 40%;
+			margin-top: 20px;
+			margin-left: 22%;
+			border-radius: 10px;
+			border: none;
+			background: #26a9e0;
+			text-decoration: none;
+			font-size: 25px;
+			font-weight: 500;
+			color: rgb(46, 52, 54);
+		}
+
+		button {
+			width: 30%;
+		}
+
+		button:hover,
+		.btn-item:hover {
+			background: #85d6de;
+		}
+
+		@media (min-width: 568px) {
+
+			html,
+			body {
+				height: 100%;
+			}
+
+			.form-container {
+				flex-direction: row;
+				height: calc(100% - 50px);
+			}
+
+			.left-part,
+			form {
+				flex: 1;
+				height: auto;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="form-container">
+		<img src="/Website/src/main/webapp/index.html" alt="Infrastructure" width="400" height="600"/>
+		<div class="left-part">
+			<h1>Generic IOT Infrasturcture</h1>
+			<i class="fa fa-industry"></i>
+			<h1>Register to our system</h1>
+			<h3>Choose what to do</h3>
+			<div class="btn-group">
+				<a class="btn-item" onclick="registerCompanyForm()">Register Company</a>
+				<a class="btn-item" onclick="registerProductForm()">Register Product</a>
+			</div>
+		</div>
+		<form id="form" method="post" style="background-color: rgb(46, 52, 54);">
+			<div class="title">
+				<i class="fas fa-pencil-alt"></i>
+				<h2 id="formHeader"></h2>
+			</div>
+			<div id="formsFields" class="info"></div>
+			<div class="checkbox">
+				<input type="checkbox" name="checkbox"><span>I agree to the Privacy Policy.</span>
+			</div>
+			<button type="submit">Submit</button>
+		</form>
+	</div>
+
+	<script>
+		function registerCompanyForm() {
+			document.getElementById("form").action = "Company";
+			adjustBackgroundSize();
+
+			document.getElementById("formHeader").innerText = "Register Company";
+			const formsFields = document.getElementById("formsFields");
+			formsFields.innerHTML = "";
+			addInput(formsFields, "text", "company_name", "Company Name");
+			addInput(formsFields, "text", "company_address", "Company Address");
+			addInput(formsFields, "text", "contact_name", "Contact Name");
+			addInput(formsFields, "tel", "contact_phone", "Contact Phone");
+			addInput(formsFields, "email", "contact_email", "Contact Email");
+			addInput(formsFields, "number", "service_fee", "Service Fee");
+
+			addInput(formsFields, "text", "card_number", "Card Number");
+			addInput(formsFields, "fname", "card_holder_name", "Card Holder Full Name");
+			addInput(formsFields, "date", "ex_date", "EX Date");
+			addInput(formsFields, "number", "CVV", "CVV");
+		}
+
+		function registerProductForm() {
+			document.getElementById("form").action = "Product";
+			adjustBackgroundSize();
+
+			document.getElementById("formHeader").innerText = "Register Product";
+			const formsFields = document.getElementById("formsFields");
+			formsFields.innerHTML = "";
+
+			addInput(formsFields, "text", "company_name", "Company Name");
+			addInput(formsFields, "text", "product_name", "Product Name");
+			addInput(formsFields, "text", "product_description", "Product Description");
+		}
+
+		function adjustBackgroundSize() {
+			const formContainer = document.querySelector(".form-container");
+			const form = document.getElementById("form");
+			const darkBackground = form.style.background;
+
+			if (darkBackground) {
+				formContainer.style.minHeight = `${form.clientHeight}px`;
+			}
+		}
+
+		document.addEventListener("DOMContentLoaded", function () {
+			adjustBackgroundSize();
+		});
+
+		function addInput(form, type, name, placeholder, isRequired = false) {
+			const input = document.createElement("input");
+			input.type = type;
+			input.name = name;
+			input.placeholder = placeholder;
+			input.required = isRequired;
+
+			form.appendChild(input);
+		}
+
+		registerCompanyForm();
+
+
+
+
+	</script>
+</body>
+<footer>
+    <p>&copy; All rights reserved.</p>
+  </footer>
+</html>

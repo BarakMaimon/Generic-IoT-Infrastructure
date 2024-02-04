@@ -1,0 +1,104 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 70vmin;
+  width: 130vmin;
+  pointer-events: none;
+  border: solid #000000;
+}
+
+.Title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  justify-content: center;
+  border-bottom: 3px solid #000000;
+  font-size: calc(10px + 6vmin);
+  font: small-caps bold 24px/1;
+  color: rgb(0, 0, 0);
+}
+
+.App-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: rgb(0, 0, 0);
+  font-style: inherit;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.Button {
+  color: #000000;
+  background-color: #ffffff; /* Blue background color */
+  font-size: 2em;
+  width: 600px;
+  height: 40px;
+  margin: 5px;
+  padding: 10px;
+  cursor: pointer;
+  border: 1px solid #000000;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: italic;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.Button:hover {
+  background-color: #0021f6;
+}
+
+.Button-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  background-color: #95a8fb;
+  background-image: url("background.jpeg");
+  background-size: cover; /* This property ensures the background image covers the entire viewport */
+  background-repeat: no-repeat; /* Prevent the background image from repeating */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 1vmin);
+  color: rgb(0, 0, 0);
+}
+
+.Form {
+  justify-content: center;
+  align-items: center;
+  display: block;
+  width: 400px;
+  height: 350px;
+  margin-top: 5vmin;
+  margin-left: 45vmin;
+}
+
+.Menu {
+  margin-top: 3%;
+}
+
+.submit-button {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: large;
+  margin-top: 5%;
+  align-items: center;
+}
+
+.response-data {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: large;
+  margin-top: 5vmin;
+
+  align-items: center;
+}

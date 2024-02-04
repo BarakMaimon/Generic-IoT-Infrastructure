@@ -1,0 +1,31 @@
+# Ignore compiled files
+*.class
+
+# Ignore build output
+out/
+tests/out/
+website_2.0/server/build/
+website_2.0/server/dist/
+website_2.0/client/build/
+
+# Ignore JAR files
+*.jar
+
+# Ignore Node.js dependencies
+website_2.0/client/node_modules/
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+
+# Ignore package-lock files
+package-lock.json
+
+# Ignore IDE specific files
+.idea/
+.vscode/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
